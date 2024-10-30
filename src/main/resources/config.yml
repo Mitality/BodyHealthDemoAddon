@@ -1,0 +1,19 @@
+#   _ .-') _     ('-.  _   .-')                   ('-.     _ .-') _  _ .-') _                    .-') _
+#  ( (  OO) )  _(  OO)( '.( OO )_                ( OO ).-.( (  OO) )( (  OO) )                  ( OO ) )
+#    \     .'_ (,------.,--.   ,--.).-'),-----.   / . --. / \     .'_ \     .'_  .-'),-----. ,--./ ,--,'
+#    ,`'--..._) |  .---'|   `.'   |( OO'  .-.  '  | \-.  \  ,`'--..._),`'--..._)( OO'  .-.  '|   \ |  |\
+#    |  |  \  ' |  |    |         |/   |  | |  |.-'-'  |  | |  |  \  '|  |  \  '/   |  | |  ||    \|  | )
+#    |  |   ' |(|  '--. |  |'.'|  |\_) |  |\|  | \| |_.'  | |  |   ' ||  |   ' |\_) |  |\|  ||  .     |/
+#    |  |   / : |  .--' |  |   |  |  \ |  | |  |  |  .-.  | |  |   / :|  |   / :  \ |  | |  ||  |\    |
+#    |  '--'  / |  `---.|  |   |  |   `'  '-'  '  |  | |  | |  '--'  /|  '--'  /   `'  '-'  '|  | \   |
+#    `-------'  `------'`--'   `--'     `-----'   `--' `--' `-------' `-------'      `-----' `--'  `--'
+
+language: # All the messages used in this small example addon - not stored internally
+  no-further-args: '&ePlease provide more arguments (e.g. "explode")'
+  message-prefix: '&e[Message from &a{sender}&e]: &r'
+  explode-success: '&cTarget successfully exploded'
+  no-message: '&ePlease provide a message to send'
+  no-target: '&cPlease provide a valid target'
+  invalid-target: '&cTarget player not found'
+  message-sent: '&aMessage sent successfully'
+  invalid-subcommand: '&cUnknown subcommand'
