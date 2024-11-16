@@ -31,7 +31,7 @@ public class Main extends BodyHealthAddon {
 
         fileManager.generateFileFromFileName("config.yml"); // Ensures that the primary config file is present
 
-        // You update your addons config files here. I recommend using this one:
+        // You could update your addons config files here. I recommend using this:
         // https://github.com/tchristofferson/Config-Updater?tab=readme-ov-file#config-updater
 
         registerCommand("demo", new Command()); // register subcommand ("/bodyhealth demo")
