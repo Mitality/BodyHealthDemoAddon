@@ -13,7 +13,7 @@ public class Listener implements org.bukkit.event.Listener {
 
     @EventHandler
     public void onBodyPartStateChange(BodyPartStateChangeEvent event) {
-        Main.debug().log("State of " + event.getBodyPart().name() + "'s " + event.getBodyPart().name() + " changed from " + event.getOldState() + " to " + event.getNewState());
+        Main.debug().log("State of " + event.getPlayer().getName() + "'s " + event.getBodyPart().name() + " changed from " + event.getOldState() + " to " + event.getNewState());
     }
 
 }
