@@ -5,11 +5,13 @@ import bodyhealth.api.addons.AddonFileManager;
 import bodyhealth.api.addons.AddonInfo;
 import bodyhealth.api.addons.BodyHealthAddon;
 
+import java.io.File;
+
 @AddonInfo(
-        name = "DemoAddon",
-        description = "Showcases the use of BodyHealths addon system",
-        version = "1.0.0",
-        author = "Mitality"
+    name = "DemoAddon",
+    description = "Showcases the use of BodyHealths addon system",
+    version = "1.1.0",
+    author = "Mitality"
 )
 public class Main extends BodyHealthAddon {
 
@@ -25,14 +27,12 @@ public class Main extends BodyHealthAddon {
 
     @Override
     public void onAddonEnable() {
+
         fileManager = getAddonFileManager();
         debug = getAddonDebug();
         instance = this;
 
-        fileManager.generateFileFromFileName("config.yml"); // Ensures that the primary config file is present
-
-        // You could update your addons config files here. I recommend using this:
-        // https://github.com/tchristofferson/Config-Updater?tab=readme-ov-file#config-updater
+        updateAndLoadConfig();
 
         registerCommand("demo", new Command()); // register subcommand ("/bodyhealth demo")
         registerListener(new Listener()); // Register our listener
@@ -40,14 +40,24 @@ public class Main extends BodyHealthAddon {
 
     @Override
     public void onAddonDisable() {
+
+        // This is not needed, but you can do it for style points
         unregisterListeners();
         unregisterCommands();
+
     }
 
     @Override
     public void onBodyHealthReload() {
-        // This is called whenever BodyHealth is reloaded
-        // You could update files here, reload a potential internal configuration, etc.
+        updateAndLoadConfig();
+    }
+
+    // We make this its own method here, because we want to do this onAddonEnable AND onBodyHealthReload
+    private static void updateAndLoadConfig() {
+        fileManager.saveResource("config.yml", false);
+        File configFile = fileManager.getFile("config.yml");
+        fileManager.updateYamlFile("config.yml", configFile);
+        Config.load(fileManager.getYamlConfiguration("config.yml"));
     }
 
     public static Main getInstance() {

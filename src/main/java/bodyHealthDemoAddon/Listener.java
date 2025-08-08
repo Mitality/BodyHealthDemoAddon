@@ -8,7 +8,7 @@ public class Listener implements org.bukkit.event.Listener {
 
     @EventHandler
     public void onBodyPartHealthChange(BodyPartHealthChangeEvent event) {
-        Main.debug().log("Health of " + event.getPlayer().getName() + "'s " + event.getBodyPart().name() + " changed from " + event.getOldHealth() + " to " + event.getNewHealth());
+        Main.debug().log("Health of " + event.getPlayer().getName() + "'s " + event.getBodyPart().name() + " changed from " + event.getOldHealth() + "% to " + event.getNewHealth() + "%");
     }
 
     @EventHandler

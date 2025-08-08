@@ -22,30 +22,26 @@ public class Command implements AddonCommand {
 
         if (args.length < 2) {
             // User only executed '/bodyhealth demo' without further arguments
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                config.getString("language.no-further-args", "&ePlease provide more arguments (e.g. \"explode\")")));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.language_no_further_args));
             return true;
         }
 
         if (args[1].equalsIgnoreCase("explode")) {
 
             if (args.length < 3 && !(sender instanceof Player)) {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    config.getString("language.no-target", "&cPlease provide a valid target")));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.language_no_target));
                 return true;
             }
 
             Player target = args.length > 2 ? Bukkit.getPlayer(args[2]) : (Player) sender;
 
             if (target == null) {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    config.getString("language.invalid-target", "&cTarget player not found")));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.language_invalid_target));
                 return true;
             }
 
             Objects.requireNonNull(target.getLocation().getWorld()).createExplosion(target.getLocation(), 5);
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                config.getString("language.explode-success", "&cTarget successfully exploded")));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.language_explode_success));
             return true;
 
         }
@@ -54,8 +50,7 @@ public class Command implements AddonCommand {
 
             // Check if the sender provided a message to send
             if (args.length < 3) {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    config.getString("language.no-message", "&ePlease provide a message to send")));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.language_no_message));
                 return true;
             }
 
@@ -65,8 +60,7 @@ public class Command implements AddonCommand {
             if (args.length > 3) {
                 target = Bukkit.getPlayer(args[2]);
                 if (target == null) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        config.getString("language.invalid-target", "&cTarget player not found")));
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.language_invalid_target));
                     return true;
                 }
                 // Combine all words after the player name into the message
@@ -75,8 +69,7 @@ public class Command implements AddonCommand {
 
             else { // No target specified, send the message to the sender themselves if they are a player
                 if (!(sender instanceof Player)) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        config.getString("language.no-target", "&cPlease provide a valid target")));
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.language_no_target));
                     return true;
                 }
                 target = (Player) sender;
@@ -85,16 +78,13 @@ public class Command implements AddonCommand {
             }
 
             // Send the message to the target player
-            target.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                config.getString("language.message-prefix", "&e[Message from &a{sender}&e]: &r").replace("{sender}", sender.getName()) + message));
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                config.getString("language.message-sent", "&aMessage sent successfully")));
+            target.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.language_message_prefix.replace("{sender}", sender.getName()) + message));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.language_message_sent));
             return true;
         }
 
         // User specified an unknown / invalid subcommand
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-            config.getString("language.invalid-subcommand", "&cUnknown subcommand")));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.language_invalid_subcommand));
         return true;
     }
 

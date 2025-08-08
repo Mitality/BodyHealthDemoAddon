@@ -6,7 +6,7 @@
 
     <groupId>mitality</groupId>
     <artifactId>BodyHealthDemoAddon</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
     <name>BodyHealthDemoAddon</name>
@@ -77,7 +77,7 @@
         <dependency>
             <groupId>com.github.Mitality</groupId>
             <artifactId>BodyHealth</artifactId>
-            <version>e574ff3c80</version> <!-- USE THE NEWEST BODYHEALTH VERSION HERE -->
+            <version>11c53addcb</version> <!-- USE THE NEWEST BODYHEALTH VERSION HERE -->
         </dependency>
     </dependencies>
 </project>
