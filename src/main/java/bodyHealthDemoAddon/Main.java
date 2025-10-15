@@ -10,7 +10,7 @@ import java.io.File;
 @AddonInfo(
     name = "DemoAddon",
     description = "Showcases the use of BodyHealths addon system",
-    version = "1.1.0",
+    version = "1.2.0",
     author = "Mitality"
 )
 public class Main extends BodyHealthAddon {
@@ -20,9 +20,8 @@ public class Main extends BodyHealthAddon {
     private static Main instance;
 
     @Override
-    public void onAddonPreEnable() {
-        // Called when the addon is loaded together with potential other addons before enabling them
-        // Just use onAddonEnable() unless you know what you are doing and need to do something here
+    public void onAddonLoad() {
+        // Called onLoad, before any plugins are enabled
     }
 
     @Override
@@ -48,11 +47,11 @@ public class Main extends BodyHealthAddon {
     }
 
     @Override
-    public void onBodyHealthReload() {
+    public void onAddonReload() {
         updateAndLoadConfig();
     }
 
-    // We make this its own method here, because we want to do this onAddonEnable AND onBodyHealthReload
+    // We make this its own method here, because we want to do this onAddonEnable AND onAddonReload
     private static void updateAndLoadConfig() {
         fileManager.saveResource("config.yml", false);
         File configFile = fileManager.getFile("config.yml");
